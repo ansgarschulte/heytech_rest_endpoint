@@ -1,0 +1,111 @@
+{
+  // Heytech  configs
+  "Heytech": {
+    "lan": {
+      "host": "10.0.1.6",
+      "port": 1002
+    },
+    "rolladen": {
+      "/gartenlicht/": "15",
+      "/rolladengruppe/eg/": [
+        "9",
+        "10",
+        "3",
+        "4",
+        "11"
+      ],
+      "/rolladengruppe/1og/": [
+        "2",
+        "5",
+        "6",
+        "7",
+        "8",
+        "14"
+      ],
+      "/rolladengruppe/dg/": [
+        "12",
+        "13"
+      ],
+      "/rolladengruppe/sun/dg/": {
+        "rolladen": [
+          "12",
+          "13"
+        ],
+        "time": 18000,
+        "command": "down"
+      },
+      "/rolladengruppe/sun/schlafzimmer/": {
+        "rolladen": [
+          "7",
+          "8"
+        ],
+        "time": 10000,
+        "command": "down"
+      },
+      "/rolladengruppe/sun/kueche/": {
+        "rolladen": [
+          "9",
+          "10"
+        ],
+        "time": 7000,
+        "command": "down"
+      },"/rolladengruppe/sun/wohnzimmer/": {
+        "rolladen": [
+          "3",
+          "4"
+        ],
+        "time": 3000,
+        "command": "down"
+      },
+      "/rolladengruppe/wohnzimmer/": [
+        "3",
+        "4"
+      ],
+      "/rolladengruppe/kinderzimmer/": [
+        "2",
+        "5",
+        "6"
+      ],
+      "/rolladengruppe/alleausserkinderzimmer/": [
+        "3",
+        "4",
+        "9",
+        "10",
+        "11",
+        "7",
+        "8",
+        "12",
+        "13",
+        "14"
+      ],
+      "/rolladengruppe/alleausserkinderzimmerundwohnzimmer/": [
+        "9",
+        "10",
+        "11",
+        "7",
+        "8",
+        "12",
+        "13",
+        "14"
+      ],
+      "/rolladengruppe/kueche/": [
+        "9",
+        "10"
+      ],
+      "/rolladengruppe/eltern/": [
+        "7",
+        "8"
+      ],
+      "/rolladengruppe/annika/": [
+        "6"
+      ],
+      "/rolladengruppe/hendrik/": [
+        "2",
+        "5"
+      ],
+      "/rolladengruppe/bad/": "14",
+      "/rolladengruppe/wc/": "11",
+      "/rolladengruppe/zentral/": "1"
+    }
+  }
+}

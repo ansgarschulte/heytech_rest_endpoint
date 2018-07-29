@@ -1,12 +1,21 @@
-## Nodejs in 10 minutes
+## Heytech Rest Endpoint für Smarthome Integrationen wie OpenHab2 
+* clone the project
 
-clone the project
+### Konfiguration
+* edit config/default.json
 
-### Installations
+### Installation
 * npm install
 
 ### Run
 
 * npm run start
 
-:)# heytech_rest_endpoint
+### Use
+
+e.g.: 
+http://SERVER-IP/rollanden/schlafzimmer/down
+http://SERVER-IP/rollanden/schlafzimmer/up
+http://SERVER-IP/rollanden/schlafzimmer/stop
+
+:)# 

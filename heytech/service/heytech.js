@@ -39,7 +39,7 @@ let doCommandForFenster = function (client, fenster, commandStr) {
     client.send(newLine);
     client.send(fenster);
     client.send(newLine);
-    client.send(commandStr);
+    client.send(commandStr === 'stop' ? 'off' : commandStr);
     client.send(newLine);
     client.send(newLine);
 };

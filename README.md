@@ -14,8 +14,8 @@
 ### Use
 
 e.g.: 
-http://SERVER-IP/rollanden/schlafzimmer/down
-http://SERVER-IP/rollanden/schlafzimmer/up
-http://SERVER-IP/rollanden/schlafzimmer/stop
+* http://SERVER-IP/rollanden/schlafzimmer/down
+* http://SERVER-IP/rollanden/schlafzimmer/up
+* http://SERVER-IP/rollanden/schlafzimmer/stop
 
 :)# 

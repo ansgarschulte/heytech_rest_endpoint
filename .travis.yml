@@ -1,6 +1,14 @@
+sudo: required
+services:
+- docker
+
 language: node_js
 node_js:
-- "8"
+  - "8"
+
+cache:
+  directories:
+  - node_modules
 
 deploy:
   provider: script

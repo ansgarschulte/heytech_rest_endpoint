@@ -7,7 +7,8 @@
     "telnet": "nodemon heytech/service/telnet.js",
     "build": "rimraf dist/ && babel ./ --out-dir dist/ --ignore ./node_modules,./.babelrc,./package.json,./npm-debug.log --copy-files",
     "start": "npm run build && node dist/server.js",
-    "test": "npm run build && node dist/heytech/service/test.js"
+    "localtest": "npm run build && node dist/heytech/service/test.js",
+    "test": "npm run build"
   },
   "keywords": [
     "RESTful",

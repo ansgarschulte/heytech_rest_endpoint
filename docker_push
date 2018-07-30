@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export IMAGE_NAME=ansgarschulte/heytech_rest_server:%{commit}
+export IMAGE_NAME=ansgarschulte/heytech_rest_server:$TRAVIS_COMMIT
 export LATEST=ansgarschulte/heytech_rest_server:latest
 
 echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin

@@ -1,34 +1,21 @@
-const _ = require('lodash');
+import _ from 'lodash';
+import {Telnet} from 'telnet-rxjs';
+import config from 'config';
 
 const newLine = String.fromCharCode(13);
 
-const doTelNetStuff = function (telnetCommands) {
-    const {Telnet} = require('telnet-rxjs');
-    const _ = require('lodash');
-    const config = require('config');
+const doTelNetStuff = (telnetCommands) => {
     const serverConfig = config.get('Heytech.lan');
 
     const client = Telnet.client(serverConfig.host + ':' + serverConfig.port);
     let connected = false;
 
     client.filter((event) => event instanceof Telnet.Event.Connected)
-        .subscribe((event) => {
+        .subscribe(() => {
             connected = true;
-
             telnetCommands(client);
-
             client.disconnect();
         });
-
-    client.data
-        .subscribe((data) => {
-            if (!connected) {
-                return;
-            }
-            console.log('Data: ' + data);
-        });
-
-
     client.connect();
 };
 let doCommandForFenster = function (client, fenster, commandStr) {

@@ -173,3 +173,10 @@ end
     * oder beim Schließen des Fensters nach Sonnenuntergang die Rolladen runterfahren.
     * Rolladen in Sonnenbeschattung fahren, wenn die Außentemperatur 25 Grad übersteigt
     * usw.
+    
+
+#### Alternatives Binding in OpenHab
+
+Alternativ könnte man auch das TCP & UDP Binding in OpenHab verwenden.
+https://www.openhab.org/addons/bindings/tcp1/#tcp-udp-binding
+Davon rate ich allerdings ab, da es eine dauerhafte Telnet Verbindung zum Heytech Lan Adapter aufbaut und man somit, nicht mehr per HeyControl Handy oder PC Anwendung auf die Anlage zugreifen kann.

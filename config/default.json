@@ -3,7 +3,8 @@
   "Heytech": {
     "lan": {
       "host": "10.0.1.6",
-      "port": 1002
+      "port": 1002,
+      "pin": ""
     },
     "rolladen": {
       "/gartenlicht/": "15",

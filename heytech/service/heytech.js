@@ -19,6 +19,13 @@ const doTelNetStuff = (telnetCommands) => {
     client.connect();
 };
 let doCommandForFenster = function (client, fenster, commandStr) {
+    if(!_.isEmpty(serverConfig.pin)){
+        client.send('rsc');
+        client.send(newLine);
+        client.send(serverConfig.pin);
+        client.send(newLine);
+        client.send(newLine);
+    }
     client.send('rhi');
     client.send(newLine);
     client.send(newLine);
@@ -28,6 +35,8 @@ let doCommandForFenster = function (client, fenster, commandStr) {
     client.send(newLine);
     client.send(commandStr === 'stop' ? 'off' : commandStr);
     client.send(newLine);
+    client.send(newLine);
+    client.send('rhe');
     client.send(newLine);
 };
 export const rollershutter = (fenster, commandStr) => {

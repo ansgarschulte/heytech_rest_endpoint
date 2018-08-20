@@ -4,7 +4,7 @@
 
 Ziel dieses Projekt ist es meine HeyTech Rolladen Steuerung in OpenHab2 oder anderen SmartHome Software Lösungen zu integrieren.
 
-##Version
+## Version
 
 * Version 1.1
     * Zugriff auf die Steuerung, wenn sie Pin geschützt ist.

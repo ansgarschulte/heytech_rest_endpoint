@@ -3,9 +3,10 @@ import {Telnet} from 'telnet-rxjs';
 import config from 'config';
 
 const newLine = String.fromCharCode(13);
+const serverConfig = config.get('Heytech.lan');
 
 const doTelNetStuff = (telnetCommands) => {
-    const serverConfig = config.get('Heytech.lan');
+
 
     const client = Telnet.client(serverConfig.host + ':' + serverConfig.port);
     let connected = false;
@@ -18,11 +19,12 @@ const doTelNetStuff = (telnetCommands) => {
         });
     client.connect();
 };
-let doCommandForFenster = function (client, fenster, commandStr) {
-    if(!_.isEmpty(serverConfig.pin)){
+let doCommandForFenster = function (client, fenster, commandStr, pin) {
+    if(!_.isEmpty(pin)){
+        console.log('with pin')
         client.send('rsc');
         client.send(newLine);
-        client.send(serverConfig.pin);
+        client.send(pin);
         client.send(newLine);
         client.send(newLine);
     }
@@ -36,19 +38,17 @@ let doCommandForFenster = function (client, fenster, commandStr) {
     client.send(commandStr === 'stop' ? 'off' : commandStr);
     client.send(newLine);
     client.send(newLine);
-    client.send('rhe');
-    client.send(newLine);
 };
 export const rollershutter = (fenster, commandStr) => {
     doTelNetStuff((client) => {
-        doCommandForFenster(client, fenster, commandStr);
+        doCommandForFenster(client, fenster, commandStr, serverConfig.pin);
     });
 };
 
 export const rollershutters = (fensters, commandStr) => {
     doTelNetStuff((client) => {
         fensters.forEach(fenster => {
-            doCommandForFenster(client, fenster, commandStr);
+            doCommandForFenster(client, fenster, commandStr, serverConfig.pin);
         });
     });
 };
@@ -56,13 +56,13 @@ export const rollershutters = (fensters, commandStr) => {
 export const rollershuttersWithTimeout = (fensters, downTime, commandStr) => {
     doTelNetStuff((client) => {
         fensters.forEach(fenster => {
-            doCommandForFenster(client, fenster, commandStr);
+            doCommandForFenster(client, fenster, commandStr, serverConfig.pin);
         });
     });
     _.delay(() => {
         doTelNetStuff((client) => {
             fensters.forEach(fenster => {
-                doCommandForFenster(client, fenster, 'off');
+                doCommandForFenster(client, fenster, 'off', serverConfig.pin);
             });
         });
     }, downTime)

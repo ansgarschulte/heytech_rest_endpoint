@@ -1,11 +1,11 @@
 #!/usr/bin/env node
 
-import heytech from './heytech';
+var heytech = require('../service/heytech');
 
-heytech.rollershutter('13', 'up');
+heytech.rollershutter('9', 'down');
 
 setTimeout(function () {
-    heytech.rollershutter('13', 'off');
+    heytech.rollershutter('9', 'off');
 }, 1000);
 
 

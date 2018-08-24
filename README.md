@@ -6,6 +6,8 @@ Ziel dieses Projekt ist es meine HeyTech Rolladen Steuerung in OpenHab2 oder and
 
 ## Version
 
+* Version 1.2
+    * Endpunkte für Klimadaten und Rolladen Öffnungsstatus in Prozent
 * Version 1.1
     * Zugriff auf die Steuerung, wenn sie Pin geschützt ist.
 * Version 1.0
@@ -111,24 +113,111 @@ Dies benutzte ich für teilweise Beschattung im Sommer.
 
 ### Verwendung
 
+##### Dynamische Endpunkte
+
 Der Rest Endpunkt ist nun auf der Rechner erreichbar, auf dem das Docker Image läuft oder der Node Prozess gestartet wurde.
 
 Man kann dies einfach im Browser testen, indem man die Beispiel URLs eingibt: 
 
 z.B.: 
-* http://SERVER-IP/rollanden/kueche/down
-* http://SERVER-IP/rollanden/kueche/up
-* http://SERVER-IP/rollanden/kueche/stop
+* http://SERVER-IP:3000/rollanden/kueche/down
+* http://SERVER-IP:3000/rollanden/kueche/up
+* http://SERVER-IP:3000/rollanden/kueche/stop
 
-* http://SERVER-IP/rolladengruppe/eg/down
+* http://SERVER-IP:3000/rolladengruppe/eg/down
 
-* http://SERVER-IP/rolladengruppe/sun/schlafzimmer/down
+* http://SERVER-IP:3000/rolladengruppe/sun/schlafzimmer/down
 
 Man beachte, dass als letztes in der URL der Rolladen Befehl mitgegeben werden muss.
 
 * "down": Rolladen runter
 * "up": Rolladen hoch
 * "stop": Rolladen stop
+
+##### Feste Endpunkte
+
+* http://SERVER-IP:3000/heytech/oeffnungsprozent
+
+Gibt ein Array der Rolladen Öffnungsstatus in Prozent wieder. Dargestellt wird für jeden Kanal der Prozentwert, zu dem ein Rollladen geöffnet ist. Eine eingeschaltete
+Leuchte wird mit 100, eine ausgeschaltete Leuchte mit 0 dargestellt.
+Bsp: [
+     "100",
+     "100",
+     "100",
+     "100",
+     "100",
+     "100",
+     "100",
+     "100",
+     "100",
+     "100",
+     "100",
+     "100",
+     "100",
+     "100",
+     "0",
+     "100",
+     "100",
+     "100",
+     "100",
+     "100",
+     "100",
+     "100",
+     "100",
+     "100",
+     "100",
+     "100",
+     "100",
+     "100",
+     "100",
+     "100",
+     "100",
+     "100",
+     ""
+     ]
+
+* http://SERVER-IP:3000/heytech/klima
+
+Gibt ein Array der Klima Daten wieder. 
+16 Werte beinhaltet, in folgender Zuordnung:
+ * [1] Helligkeit Aktuell
+ * [2] Innentemperatur (999 für: kein Innentemperatursensor angeschlossen)
+ * [3] Innentemperatur Nachkommastelle (999 für: kein Innentemperatursensor angeschlossen)
+ * [4] Innentemperatur Min (999 für: kein Innentemperatursensor angeschlossen)
+ * [5] Innentemperatur Max (999 für: kein Innentemperatursensor angeschlossen)
+ * [6] Außentemperatur (999 für: kein Innentemperatursensor angeschlossen)
+ * [7] Außentemperatur Nachkommastelle (999 für: kein Innentemperatursensor angeschlossen)
+ * [8] Außentemperatur Mi (999 für: kein Innentemperatursensor angeschlossen)
+ * [9] Außentemperatur Max (999 für: kein Innentemperatursensor angeschlossen)
+ * [10] Aktuelle Windgeschwindigkeit
+ * [11] Aktuelle Windgeschwindigkeit max
+ * [12] Alarm
+ * [13] Regen
+ * [14] obsolet
+ * [15] Helligkeit Mittel
+ * [16] Relative Luftfeuchtigkeit
+  
+Bsp: [
+     "0",
+     "999",
+     "999",
+     "999",
+     "999",
+     "999",
+     "999",
+     "999",
+     "999",
+     "0",
+     "0",
+     "0",
+     "0",
+     "1",
+     "0",
+     "0",
+     ""
+     ]
+
+
 
 
 ### Einbindung in Openhab

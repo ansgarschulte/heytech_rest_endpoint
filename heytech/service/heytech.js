@@ -19,9 +19,9 @@ const doTelNetStuff = (telnetCommands) => {
         });
     client.connect();
 };
-let doCommandForFenster = function (client, fenster, commandStr, pin) {
+const doCommandForFenster = function (client, fenster, commandStr, pin) {
     if(!_.isEmpty(pin)){
-        console.log('with pin')
+        console.log('with pin');
         client.send('rsc');
         client.send(newLine);
         client.send(pin);

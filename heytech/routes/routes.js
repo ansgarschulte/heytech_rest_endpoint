@@ -1,7 +1,9 @@
 'use strict';
 
+
 module.exports = function (app) {
     const heytech = require('../service/heytech');
+    const heytechReader = require('../service/heytechReader');
     const config = require('config');
 
     const rolladenConfig = config.get('Heytech.rolladen');
@@ -29,7 +31,20 @@ module.exports = function (app) {
                 res.send('OK');
             });
         }
+    });
 
+    console.log('/heytech/klima');
+    app.get('/heytech/klima', function(req, res) {
+        heytechReader.klima().then(data => {
+            res.send(data);
+        })
+    });
+
+    console.log('/heytech/oeffnungsprozent');
+    app.get('/heytech/oeffnungsprozent', function(req, res) {
+        heytechReader.oeffnungsProzent().then(data => {
+            res.send(data);
+        })
     });
 
 };

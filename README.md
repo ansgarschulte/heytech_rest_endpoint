@@ -240,6 +240,24 @@ Man legt normale Items in OpenHab mit Konfigurationsdateien an. Z.B. rolladen.it
 Rollershutter   EG_Wohnzimmer_Rolladen  "Rolladen"   <rollershutter  (GF_LivingDining, gShutter)   {http=">[UP:GET:http://10.0.1.88:3000/rolladengruppe/wohnzimmer/up] >[DOWN:GET:http://10.0.1.88:3000/rolladengruppe/wohnzimmer/down]  >[STOP:GET:http://10.0.1.88:3000/rolladengruppe/wohnzimmer/off]"}
 ```
 
+Für die Sensordaten legt man zunächst eine http.cfg Datei an.
+In der konfiguriert man die Klima Url:
+
+```
+# heytech wetter sensor alle 5 Minuten
+heytechwetter.url=http://10.0.1.88:3000/heytech/klima
+heytechwetter.updateInterval=300000
+```
+
+Die Klima Daten werden dann wieder als Items konfiguriert: z.B. wetter.items
+Hierzu benötigt man noch das JsonPath Binding.
+
+```
+String HeyTech_Helligkeit "Helligkeit in Lux [%s]" <sun> (gWetter) { http="<[heytechwetter:10000:JSONPATH($[0])]"}
+String HeyTech_Aussentemperatur "Außentemperatur [%s]" <sun> (gWetter) { http="<[heytechwetter:10000:JSONPATH($[5])]"}
+String HeyTech_Regen "Regen [%s]" <rain> (gWetter) { http="<[heytechwetter:10000:JSONPATH($[12])]"}
+String HeyTech_Luftfeuchtigkeit "Luftfeuchtigkeit [%s]" <rain> (gWetter) { http="<[heytechwetter:10000:JSONPATH($[15])]"}
+```
 Dies ist die Beispiel Konfiguration für eine Rolladengruppe Wohnzimmer, die über das HTTP Binding und dem HeyTech Rest Endpoint gesteuert wird.
 Der HeyTech Rest Endpoint läuft hier auf einem Server unter der IP 10.0.1.88
 

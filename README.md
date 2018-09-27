@@ -5,7 +5,8 @@
 Ziel dieses Projekt ist es meine HeyTech Rolladen Steuerung in OpenHab2 oder anderen SmartHome Software Lösungen zu integrieren.
 
 ## Version
-
+* Version 1.3
+    * Stabilisierung, falls mehrere Befehle gleichzeitig ankommen
 * Version 1.2
     * Endpunkte für Klimadaten und Rolladen Öffnungsstatus in Prozent
 * Version 1.1

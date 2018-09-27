@@ -12,17 +12,18 @@ const ENDE_SOP = 'ende_sop';
 const START_SKD = 'start_skd';
 const ENDE_SKD = 'ende_skd';
 
+let connectedHeytechReader = false;
+
 const doTelNetStuff = (telnetCommands) => {
 
     return new Promise((resolve, reject) => {
         const client = Telnet.client(serverConfig.host + ':' + serverConfig.port);
-        let connected = false;
+
 
         lastStrings = '';
 
         client.filter((event) => event instanceof Telnet.Event.Connected)
             .subscribe(() => {
-                connected = true;
                 telnetCommands(client);
             });
 
@@ -44,6 +45,7 @@ const doTelNetStuff = (telnetCommands) => {
                     // console.log(rolladenStatus);
                     lastStrings = '';
                     client.disconnect();
+                    connectedHeytechReader = false;
                     resolve(rolladenStatus);
                 } else if (lastStrings.indexOf(START_SKD) >= 0 && lastStrings.indexOf(ENDE_SKD)  >= 0) {
                     // Klima-Daten
@@ -56,10 +58,11 @@ const doTelNetStuff = (telnetCommands) => {
                     // console.log(lastStrings);
                     lastStrings = '';
                     client.disconnect();
+                    connectedHeytechReader = false;
                     resolve(klimadaten);
                 }
             });
-
+        connectedHeytechReader = true;
         client.connect();
     });
 };
@@ -89,3 +92,7 @@ export async function oeffnungsProzent() {
         doCommand(client, 'sop', serverConfig.pin);
     });
 }
+
+export const isConnected = () => {
+    return connectedHeytechReader;
+};

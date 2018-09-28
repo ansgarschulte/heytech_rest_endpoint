@@ -29,7 +29,7 @@ const doTelNetStuff = (telnetCommands) => {
 
         client.data
             .subscribe((data) => {
-                if (!connected) {
+                if (!connectedHeytechReader) {
                     return;
                 }
                 lastStrings = lastStrings.concat(data);

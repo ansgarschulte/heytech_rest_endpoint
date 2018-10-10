@@ -48,7 +48,7 @@ const doCommandForFenster = function (client, fenster, commandStr, pin, withFree
     client.send(newLine);
 
     if(withFreeze){
-        freeze(200);
+        freeze(500);
     }
 };
 export const rollershutter = (fenster, commandStr) => {

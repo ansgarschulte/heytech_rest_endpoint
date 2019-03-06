@@ -38,6 +38,19 @@ Ziel dieses Projekt ist es meine HeyTech Rolladen Steuerung in OpenHab2 oder and
     * docker-compose up -d
 
 
+### Start als Daemon mit dem Program forever https://github.com/foreverjs/forever
+###### einmalige Installation
+* npm install -g forever
+###### bauen bei Config Änderungen
+* npm run build
+###### starten als Hintergrund Prozess
+* forever start dist/server.js
+
+###### schauen ob es noch läuft
+* forever list
+###### stoppen
+* forever stop dist/server.js
+
 ### Die Konfig Datei
 
 Unter config/default.json befindet sich die Standard Konfigurationsdatei.

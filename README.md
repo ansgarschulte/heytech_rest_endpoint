@@ -1,6 +1,7 @@
 
 # DEPRECATED
 maintained version but for ioBroker: https://github.com/Jey-Cee/ioBroker.heytech
+generell version via script also for openhab: https://github.com/Maddin0815/heytech_rolladen_linux_skripts/wiki
 
 [![Build Status](https://travis-ci.org/ansgarschulte/heytech_rest_endpoint.svg?branch=master)](https://travis-ci.org/ansgarschulte/heytech_rest_endpoint)
 
